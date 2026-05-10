@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://packrift.github.io/packaging-fit-lab/sitemap.xml
+

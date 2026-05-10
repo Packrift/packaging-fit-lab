@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Packrift Packaging Fit Lab | Box Fit, DIM Weight, and Cost Planner</title>
+  <meta name="description" content="Free browser-based packaging fit lab for comparing carton utilization, DIM-weight pressure, material cost, labor assumptions, and packaging waste.">
+  <link rel="canonical" href="https://packrift.github.io/packaging-fit-lab/">
+  <meta property="og:title" content="Packrift Packaging Fit Lab">
+  <meta property="og:description" content="Compare package fit, DIM-weight pressure, and packaging cost assumptions in a no-login browser tool.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://packrift.github.io/packaging-fit-lab/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Packrift Packaging Fit Lab",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "url": "https://packrift.github.io/packaging-fit-lab/",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "Packrift", "url": "https://packrift.com"},
+    "description": "A browser-based packaging planner for carton utilization, DIM-weight pressure, packaging cost assumptions, and annualized scenario comparison."
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="https://packrift.com" aria-label="Packrift home">
+      <span class="brand-mark">P</span>
+      <span>Packrift</span>
+    </a>
+    <nav aria-label="Packrift resources">
+      <a href="https://packrift.github.io/packaging-calculators/">Calculators</a>
+      <a href="https://packrift.github.io/packaging-operations-library/">Operations Library</a>
+      <a href="https://packrift.com/pages/free-box-size-carton-fit-calculator-widget">Embed Tool</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="workspace" aria-labelledby="tool-title">
+      <div class="intro">
+        <p class="eyebrow">No-login packaging planner</p>
+        <h1 id="tool-title">Packaging Fit Lab</h1>
+        <p class="lede">Compare your current package against candidate cartons and mailers using fit, cube utilization, DIM-weight pressure, material cost, labor, and monthly order assumptions.</p>
+      </div>
+
+      <section class="control-panel" aria-label="Packaging inputs">
+        <div class="panel-heading">
+          <h2>Inputs</h2>
+          <div class="preset-row" role="group" aria-label="Sample presets">
+            <button class="ghost-button" data-preset="apparel" type="button">Apparel</button>
+            <button class="ghost-button" data-preset="parts" type="button">Parts</button>
+            <button class="ghost-button" data-preset="cosmetics" type="button">Cosmetics</button>
+          </div>
+        </div>
+
+        <form id="fit-form">
+          <div class="form-grid">
+            <fieldset>
+              <legend>Product</legend>
+              <label>Length <span>in</span><input id="itemLength" type="number" min="0.1" step="0.1" value="8"></label>
+              <label>Width <span>in</span><input id="itemWidth" type="number" min="0.1" step="0.1" value="5"></label>
+              <label>Height <span>in</span><input id="itemHeight" type="number" min="0.1" step="0.1" value="2"></label>
+              <label>Product weight <span>lb</span><input id="itemWeight" type="number" min="0.01" step="0.01" value="1.2"></label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Current package</legend>
+              <label>Length <span>in</span><input id="currentLength" type="number" min="0.1" step="0.1" value="12"></label>
+              <label>Width <span>in</span><input id="currentWidth" type="number" min="0.1" step="0.1" value="9"></label>
+              <label>Height <span>in</span><input id="currentHeight" type="number" min="0.1" step="0.1" value="4"></label>
+              <label>Material cost <span>$</span><input id="currentMaterial" type="number" min="0" step="0.01" value="0.92"></label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Operations</legend>
+              <label>Monthly orders <span>ct</span><input id="monthlyOrders" type="number" min="1" step="1" value="2500"></label>
+              <label>Labor seconds/order <span>sec</span><input id="laborSeconds" type="number" min="0" step="1" value="28"></label>
+              <label>Loaded labor rate <span>$/hr</span><input id="laborRate" type="number" min="0" step="0.5" value="22"></label>
+              <label>Void fill / tape <span>$</span><input id="consumables" type="number" min="0" step="0.01" value="0.18"></label>
+            </fieldset>
+
+            <fieldset>
+              <legend>Shipping assumptions</legend>
+              <label>DIM divisor <span>in/lb</span><input id="dimDivisor" type="number" min="1" step="1" value="139"></label>
+              <label>Billable-lb proxy <span>$</span><input id="billableRate" type="number" min="0" step="0.01" value="0.18"></label>
+              <label>Handling buffer <span>in</span><input id="clearance" type="number" min="0" step="0.1" value="0.5"></label>
+              <label>Damage-risk cost <span>$</span><input id="riskCost" type="number" min="0" step="0.01" value="0.06"></label>
+            </fieldset>
+          </div>
+        </form>
+      </section>
+
+      <section class="results-grid" aria-live="polite">
+        <article class="result-card primary-result">
+          <div>
+            <p class="eyebrow">Recommended package</p>
+            <h2 id="bestName">Calculating...</h2>
+            <p id="bestReason"></p>
+          </div>
+          <div class="big-number" id="annualSavings">$0</div>
+          <p class="metric-label">Estimated annual planning impact</p>
+        </article>
+
+        <article class="result-card visual-card">
+          <div class="card-title">
+            <h2>Fit Visual</h2>
+            <button id="copyLink" type="button" class="icon-button" title="Copy shareable state">Copy</button>
+          </div>
+          <svg id="boxVisual" viewBox="0 0 640 320" role="img" aria-label="Package fit comparison visualization"></svg>
+        </article>
+
+        <article class="result-card">
+          <h2>Scenario Map</h2>
+          <div id="metricTiles" class="metric-tiles"></div>
+        </article>
+
+        <article class="result-card">
+          <h2>Package Candidates</h2>
+          <div id="candidateTable" class="candidate-table"></div>
+        </article>
+
+        <article class="result-card notes-card">
+          <h2>Planning Notes</h2>
+          <ul id="planningNotes"></ul>
+          <div class="export-row">
+            <button id="downloadCsv" type="button">Download CSV</button>
+            <button id="resetTool" type="button" class="secondary">Reset</button>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>Planning estimates only. Verify fit with samples and confirm shipping charges against your own carrier agreements. Built by <a href="https://packrift.com">Packrift</a>.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
