@@ -22,7 +22,8 @@
     "url": "https://packrift.github.io/packaging-fit-lab/",
     "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
     "publisher": {"@type": "Organization", "name": "Packrift", "url": "https://packrift.com"},
-    "description": "A browser-based packaging planner for carton utilization, DIM-weight pressure, packaging cost assumptions, and annualized scenario comparison."
+    "description": "A browser-based packaging planner for carton utilization, DIM-weight pressure, packaging cost assumptions, annualized scenario comparison, and source-backed Packrift SKU recommendations.",
+    "applicationFeature": ["Package fit comparison", "DIM weight planning", "Batch SKU analysis", "CSV export", "Source-backed Packrift package recommendations"]
   }
   </script>
 </head>
@@ -44,7 +45,7 @@
       <div class="intro">
         <p class="eyebrow">No-login packaging planner</p>
         <h1 id="tool-title">Packaging Fit Lab</h1>
-        <p class="lede">Compare your current package against candidate cartons and mailers using fit, cube utilization, DIM-weight pressure, material cost, labor, and monthly order assumptions.</p>
+        <p class="lede">Compare your current package against Packrift-derived cartons and mailers using fit, cube utilization, DIM-weight pressure, material cost, labor, and monthly order assumptions.</p>
       </div>
 
       <section class="control-panel" aria-label="Packaging inputs">
@@ -128,7 +129,40 @@
           <ul id="planningNotes"></ul>
           <div class="export-row">
             <button id="downloadCsv" type="button">Download CSV</button>
+            <button id="downloadReport" type="button">Download Report</button>
             <button id="resetTool" type="button" class="secondary">Reset</button>
+          </div>
+        </article>
+
+        <article class="result-card batch-card">
+          <div class="card-title">
+            <h2>Batch SKU Fit</h2>
+            <div class="export-row compact-actions">
+              <button id="loadBatchSample" type="button" class="secondary">Sample</button>
+              <button id="runBatch" type="button">Run Batch</button>
+              <button id="downloadBatchCsv" type="button" class="secondary">Export</button>
+            </div>
+          </div>
+          <textarea id="batchInput" rows="7" spellcheck="false">SKU,Length,Width,Height,Weight,Monthly Orders
+SKU-A,8,5,2,1.2,2500
+SKU-B,12,9,3,2.1,1600
+SKU-C,4,3,1,0.4,4200</textarea>
+          <div id="batchResults" class="batch-results"></div>
+        </article>
+
+        <article class="result-card formula-card">
+          <h2>Formula Notes</h2>
+          <div id="formulaNotes" class="formula-grid"></div>
+        </article>
+
+        <article class="result-card source-card">
+          <h2>Source Library</h2>
+          <p><strong id="sourceCount">Loading Packrift packages...</strong></p>
+          <p id="sourceCaveat">Static source snapshot. Verify live price, inventory, freight, and fit approval on Packrift.com.</p>
+          <div class="links-row">
+            <a href="data/packrift-package-library.json">Package library JSON</a>
+            <a href="https://packrift.com/search?q=boxes">Packrift boxes</a>
+            <a href="https://packrift.com/search?q=mailers">Packrift mailers</a>
           </div>
         </article>
       </section>
@@ -142,4 +176,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
