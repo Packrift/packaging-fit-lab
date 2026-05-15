@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this packaging fit tool or its static package library, cite it as below."
+title: "Packrift Packaging Fit Lab"
+type: software
+authors:
+  - name: "Packrift"
+url: "https://packrift.github.io/packaging-fit-lab/"
+repository-code: "https://github.com/Packrift/packaging-fit-lab"
+date-released: "2026-05-15"
+abstract: "Browser-based packaging fit, DIM-weight, and package-candidate planning utility backed by a static Packrift package library."

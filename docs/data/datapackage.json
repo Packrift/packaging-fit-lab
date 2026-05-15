@@ -1,0 +1,43 @@
+{
+  "profile": "tabular-data-package",
+  "name": "packrift-packaging-fit-lab-data",
+  "title": "Packrift Packaging Fit Lab Data",
+  "description": "Static package-candidate library and sample batch orders for the Packrift Packaging Fit Lab.",
+  "homepage": "https://packrift.github.io/packaging-fit-lab/",
+  "created": "2026-05-15",
+  "contributors": [
+    {
+      "title": "Packrift",
+      "path": "https://packrift.com",
+      "role": "publisher"
+    }
+  ],
+  "resources": [
+    {
+      "name": "packrift-package-library",
+      "title": "Packrift Package Library",
+      "path": "packrift-package-library.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "description": "Static Packrift package candidate library generated from the Packrift product spec graph and exact-spec feed snapshot."
+    },
+    {
+      "name": "fit-lab-sample-orders",
+      "title": "Fit Lab Sample Orders",
+      "path": "fit-lab-sample-orders.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "description": "Example batch-order input for the Packaging Fit Lab.",
+      "schema": {
+        "fields": [
+          {"name": "SKU", "type": "string"},
+          {"name": "Length", "type": "number"},
+          {"name": "Width", "type": "number"},
+          {"name": "Height", "type": "number"},
+          {"name": "Weight", "type": "number"},
+          {"name": "Monthly Orders", "type": "integer"}
+        ]
+      }
+    }
+  ]
+}

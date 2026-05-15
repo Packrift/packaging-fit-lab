@@ -15,15 +15,57 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Packrift Packaging Fit Lab",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Any",
-    "url": "https://packrift.github.io/packaging-fit-lab/",
-    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-    "publisher": {"@type": "Organization", "name": "Packrift", "url": "https://packrift.com"},
-    "description": "A browser-based packaging planner for carton utilization, DIM-weight pressure, packaging cost assumptions, annualized scenario comparison, and source-backed Packrift SKU recommendations.",
-    "applicationFeature": ["Package fit comparison", "DIM weight planning", "Batch SKU analysis", "CSV export", "Source-backed Packrift package recommendations"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://packrift.com/#organization",
+        "name": "Packrift",
+        "url": "https://packrift.com"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://packrift.github.io/packaging-fit-lab/#software",
+        "name": "Packrift Packaging Fit Lab",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "url": "https://packrift.github.io/packaging-fit-lab/",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "publisher": {"@id": "https://packrift.com/#organization"},
+        "description": "A browser-based packaging planner for carton utilization, DIM-weight pressure, packaging cost assumptions, annualized scenario comparison, and source-backed Packrift SKU recommendations.",
+        "applicationFeature": ["Package fit comparison", "DIM weight planning", "Batch SKU analysis", "CSV export", "Source-backed Packrift package recommendations"],
+        "softwareHelp": "https://packrift.github.io/packaging-fit-lab/llms.txt",
+        "isBasedOn": {"@id": "https://packrift.github.io/packaging-fit-lab/#dataset"}
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://packrift.github.io/packaging-fit-lab/#dataset",
+        "name": "Packrift Packaging Fit Lab Data",
+        "description": "Static package-candidate library and sample batch orders for the Packrift Packaging Fit Lab.",
+        "url": "https://packrift.github.io/packaging-fit-lab/data/datapackage.json",
+        "creator": {"@id": "https://packrift.com/#organization"},
+        "publisher": {"@id": "https://packrift.com/#organization"},
+        "distribution": [
+          {
+            "@type": "DataDownload",
+            "name": "Packrift package library JSON",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://packrift.github.io/packaging-fit-lab/data/packrift-package-library.json"
+          },
+          {
+            "@type": "DataDownload",
+            "name": "Fit Lab sample orders CSV",
+            "encodingFormat": "text/csv",
+            "contentUrl": "https://packrift.github.io/packaging-fit-lab/data/fit-lab-sample-orders.csv"
+          },
+          {
+            "@type": "DataDownload",
+            "name": "Data Package metadata",
+            "encodingFormat": "application/json",
+            "contentUrl": "https://packrift.github.io/packaging-fit-lab/data/datapackage.json"
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -161,6 +203,9 @@ SKU-C,4,3,1,0.4,4200</textarea>
           <p id="sourceCaveat">Static source snapshot. Verify live price, inventory, freight, and fit approval on Packrift.com.</p>
           <div class="links-row">
             <a href="data/packrift-package-library.json">Package library JSON</a>
+            <a href="data/datapackage.json">Data Package</a>
+            <a href="data/fit-lab-sample-orders.csv">Sample orders CSV</a>
+            <a href="llms.txt">AI summary</a>
             <a href="https://packrift.com/search?q=boxes">Packrift boxes</a>
             <a href="https://packrift.com/search?q=mailers">Packrift mailers</a>
           </div>

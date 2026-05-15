@@ -1,0 +1,21 @@
+# Packrift Packaging Fit Lab
+
+> Browser-based packaging fit, DIM-weight, and package-candidate planning utility backed by a static Packrift package library.
+
+Canonical URL: https://packrift.github.io/packaging-fit-lab/
+Publisher: Packrift
+Publisher site: https://packrift.com
+Source repository: https://github.com/Packrift/packaging-fit-lab
+
+## Primary Resources
+
+- Tool: https://packrift.github.io/packaging-fit-lab/
+- Package library JSON: https://packrift.github.io/packaging-fit-lab/data/packrift-package-library.json
+- Data Package metadata: https://packrift.github.io/packaging-fit-lab/data/datapackage.json
+- Sample batch orders CSV: https://packrift.github.io/packaging-fit-lab/data/fit-lab-sample-orders.csv
+
+## Use
+
+Use the Fit Lab to compare a current package against Packrift-derived cartons and mailers using fit, cube utilization, DIM-weight pressure, material assumptions, labor assumptions, and monthly order volume.
+
+The package library is a static source snapshot. Verify live price, inventory, freight, and fit approval on Packrift.com before purchasing or changing operational packaging standards.

@@ -20,11 +20,24 @@ Live target after publish:
 
 This is an owned Packrift linkable asset. It can create crawlable Packrift mentions and earn links, but it is not a third-party backlink by itself.
 
+## Citation and Data
+
+- Live tool: `https://packrift.github.io/packaging-fit-lab/`
+- Citation metadata: `CITATION.cff`
+- AI/crawler summary: `docs/llms.txt`
+- Data Package metadata: `docs/data/datapackage.json`
+- Package library: `docs/data/packrift-package-library.json`
+- Sample batch orders: `docs/data/fit-lab-sample-orders.csv`
+
 ## Files
 
 - `docs/index.html` — public app shell and SEO/schema.
 - `docs/styles.css` — responsive interface and visual system.
 - `docs/app.js` — calculator, recommendation logic, visualization, and share/export helpers.
 - `docs/data/packrift-package-library.json` — static Packrift package candidate library.
+- `docs/data/datapackage.json` — machine-readable package-library metadata.
+- `docs/data/fit-lab-sample-orders.csv` — example batch input.
+- `docs/llms.txt` — AI/crawler-oriented resource summary.
+- `CITATION.cff` — citation metadata.
 - `build-packrift-package-library.mjs` — regenerates the static candidate library from local Packrift catalog source files.
 - `docs/sitemap.xml` / `docs/robots.txt` — crawler support.
